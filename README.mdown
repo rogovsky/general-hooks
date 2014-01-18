@@ -18,8 +18,7 @@ in `/opt/general-hooks`.
 
 ## Requirements
 * git-flow AVH edition
-* WordPress meta information is set up as described below.
-* The readme.txt contains a Changelog section as described below.
+* A changelog file as described below.
 * Bash shell script.
 * Use the [Semantic Versioning 2.0.0](http://semver.org/) specification.
 
@@ -41,29 +40,15 @@ mandatory WordPress meta information,
 * There is no need to change the version for the stable tag in this file. This 
   will be taking care of when you finish a release or hotfix.
   
-## WordPress meta information
-Unlike the codex describes, I use a different comment system for the meta 
-information.
-```
-/**
- * Plugin Name:
- * Plugin URI:
- * Description:
- * Version: 0.0.0
- * Author: 
- * Author URI: 
- *
-*/
-```
-You can add or remove meta information but you need to keep the Version tag, 
-with a space behind the colon.
+## Changelog file
+You can change the name of the changelog in the hooks_config file, default it
+looks for CHANGES.md
 
-## readme.txt
-The readme.txt needs to contain a section for the changelog, set up as follows
+The changelog file set up is as follows
 ```
-== Changelog ==
+# Changelog
 
-= Version 0.0.0 =
+### 0.0.0
 * Start of the changelog
 ```
 
