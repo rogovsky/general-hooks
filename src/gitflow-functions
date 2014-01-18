@@ -92,7 +92,7 @@ gitflow_set_rc_release() {
 }
 
 gitflow_get_current_version() {
-	CURRENT_VERSION=$(grep  -m1 "Version:" $ROOTDIR/$MAINFILE | cut -f4 -d" ")
+	CURRENT_VERSION=$(grep -m1 "### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
 	echo "$CURRENT_VERSION"
 }
 
