@@ -3,7 +3,7 @@
 # Copyright 2013 Peter van der Does. All rights reserved.
 #
 
-prefix=/opt/wp-plugin-hooks
+prefix=/opt/general-hooks
 
 # files that need mode 755
 EXEC_FILES=src/commit-msg
