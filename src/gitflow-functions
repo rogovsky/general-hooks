@@ -79,7 +79,8 @@ gitflow_build_version() {
 # Set the pre-release, it counts all commits but not the one in master
 #
 gitflow_set_dev_release() {
-	AVH_PRE_RELEASE=-dev.$(git rev-list --count HEAD ^"$MASTER_BRANCH")
+	AVH_PRE_RELEASE_PREFIX_DEV=${AVH_PRE_RELEASE_PREFIX_DEV:="-dev."}
+	AVH_PRE_RELEASE=${AVH_PRE_RELEASE_PREFIX_DEV}$(git rev-list --count HEAD ^"$MASTER_BRANCH")
 }
 
 #
@@ -87,8 +88,9 @@ gitflow_set_dev_release() {
 #
 gitflow_set_rc_release() {
 	local RC_LEVEL=$(echo "$1" | cut -f2 -d"-"|cut -f2 -d".")
+	AVH_PRE_RELEASE_PREFIX_RC=${AVH_PRE_RELEASE_PREFIX_RC:="-rc."}
 	RC_LEVEL=$(($RC_LEVEL+1))
-	AVH_PRE_RELEASE=-rc.$RC_LEVEL
+	AVH_PRE_RELEASE=${AVH_PRE_RELEASE_PREFIX_RC}${RC_LEVEL}
 }
 
 gitflow_get_current_version() {
