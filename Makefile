@@ -12,7 +12,6 @@ EXEC_FILES+=src/post-commit
 EXEC_FILES+=src/prepare-commit-msg
 
 # files that need mode 644
-SCRIPT_FILES =src/config.sh
 SCRIPT_FILES+=src/gitflow-functions
 SCRIPT_FILES+=src/hooks_config.sample
 SCRIPT_FILES+=src/jshint.json
@@ -42,7 +41,7 @@ install:
 		install -m 0644 "$$i" \
 			$(prefix)/modules/; \
 	done
-	
+
 uninstall:
-	test -d $(prefix) 
+	test -d $(prefix)
 	rm -rf $(prefix)

@@ -11,7 +11,7 @@ HOOK_ERROR=0
 
 echo ${WHITE}
 
-for module in $pre_commit_modules; do
+for module in $PRE_COMMIT_MODULES; do
     module_path="$HOOKS_MODULES_DIR/$module"
     [ ! -e $module_path ] && continue
     . "$HOOKS_MODULES_DIR/$module"
