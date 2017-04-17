@@ -17,7 +17,7 @@ ROOTDIR=$(git rev-parse --show-toplevel)
 TMPFILE=$(mktemp --suffix=.gitflow)
 
 gitflow_set_major_minor $VERSION
-AVH_PRE_RELEASE="-rc.1"
+gitflow_set_rc_release
 gitflow_build_version
 gitflow_update_version $AVH_VERSION
 
