@@ -94,14 +94,14 @@ gitflow_set_rc_release() {
 }
 
 gitflow_get_current_version() {
-	CURRENT_VERSION=$(grep -m1 "### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
+	CURRENT_VERSION=$(grep -m1 "#### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
 	echo "$CURRENT_VERSION"
 }
 
 gitflow_get_stable_version() {
 	current_branch=$(git rev-parse --abbrev-ref HEAD)
 	git checkout -q "$MASTER_BRANCH"
-	STABLE_VERSION=$(grep -m1 "### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
+	STABLE_VERSION=$(grep -m1 "#### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
 	git checkout -q $current_branch
 	echo "$STABLE_VERSION"
 }

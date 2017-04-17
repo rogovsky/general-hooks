@@ -18,7 +18,7 @@ ROOTDIR=$(git rev-parse --show-toplevel)
 # Update the AUTHORS file.
 gitflow_update_authors
 
-sed -i '0,/### .*/s/^### .*/### '$VERSION'/' $ROOTDIR/$CHANGELOG_FILE
+sed -i '0,/#### .*/s/^#### .*/#### '$VERSION'/' $ROOTDIR/$CHANGELOG_FILE
 
 gitflow_update_version $VERSION
 
