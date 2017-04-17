@@ -45,3 +45,5 @@ install:
 uninstall:
 	test -d $(prefix)
 	rm -rf $(prefix)
+
+update: uninstall install
