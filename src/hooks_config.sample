@@ -1,8 +1,15 @@
-MAINFILE=main.php
-CHANGELOG_FILE=CHANGES.md
+CHANGELOG_FILE=CHANGELOG.md
+
+# Generally good prefixes for development and releases
+AVH_PRE_RELEASE_PREFIX_DEV="-dev."
+AVH_PRE_RELEASE_PREFIX_RC="-rc."
+
+# Python doesn't play well with above settings. Settings below will work.
+# AVH_PRE_RELEASE_PREFIX_DEV=".dev"
+# AVH_PRE_RELEASE_PREFIX_RC=".rc"
 
 PRE_COMMIT_MODULES="prevent-master-commit.sh prevent-merge-marker-commits.sh"
 
 _update_version() {
-        sed -i '0,/Version.*/s/Version:.*/Version: '$1'/' $ROOTDIR/$MAINFILE
+        sed -i '0,/####.*/s/^####.*/#### '$1'/' $ROOTDIR/$CHANGELOG_FILE
 }
