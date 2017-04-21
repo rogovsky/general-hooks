@@ -65,3 +65,5 @@ Included modules:
 Prevent committing on master branch.
 - prevent-merge-marker-commits.sh  
 Prevent committing files containing merge markers.
+- python-flake8.sh  
+Prevent committing files that cause a flake8 error.
