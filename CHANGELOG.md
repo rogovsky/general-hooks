@@ -1,6 +1,6 @@
 # Changelog
 
-#### 1.2.1-rc.1
+#### 1.2.1
 * Preparation for new development cycle.
 
 #### 1.2.0
