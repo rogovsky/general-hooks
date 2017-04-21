@@ -1,6 +1,6 @@
 # Changelog
 
-#### 1.2.0-dev.2
+#### 1.2.0
 * Add pre-commit module: Python Flake8
 
 #### 1.1.0
