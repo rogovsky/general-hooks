@@ -1,7 +1,7 @@
 # Changelog
 
 #### 1.2.1
-* Preparation for new development cycle.
+* Python Flake8 script doesn't work correctly
 
 #### 1.2.0
 * Add pre-commit module: Python Flake8
