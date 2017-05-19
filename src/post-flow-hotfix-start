@@ -18,8 +18,8 @@ BASE=$4
 ROOTDIR=$(git rev-parse --show-toplevel)
 TMPFILE=$(mktemp --suffix=.gitflow)
 
-LINENUMBER=$(($(grep -m1 -n "^### " $ROOTDIR/$CHANGELOG_FILE | cut -f1 -d:) -1 ))
-sed ''$LINENUMBER'a### '$VERSION'\n* Preparation for hotfix.\n' $ROOTDIR/$CHANGELOG_FILE > $TMPFILE
+LINENUMBER=$(($(grep -m1 -n "^#### " $ROOTDIR/$CHANGELOG_FILE | cut -f1 -d:) -1 ))
+sed ''$LINENUMBER'a#### '$VERSION'\n* Preparation for hotfix.\n' $ROOTDIR/$CHANGELOG_FILE > $TMPFILE
 cp $TMPFILE $ROOTDIR/$CHANGELOG_FILE
 
 gitflow_set_major_minor $VERSION

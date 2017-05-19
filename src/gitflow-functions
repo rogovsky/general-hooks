@@ -17,8 +17,6 @@ CROSS=`printf ${RED}'✘'${WHITE}`
 
 # Modules directory
 HOOKS_MODULES_DIR="$HOOKS_DIR"/modules
-#pre_commit_modules="jshint.sh phplint.sh prevent-master-commit.sh prevent-merge-marker-commits.sh"
-pre_commit_modules="prevent-master-commit.sh prevent-merge-marker-commits.sh"
 
 REPO_DIR="$(git rev-parse --show-toplevel 2>/dev/null)"
 if [ ! -f "$REPO_DIR"/.git/hooks_config ]; then
@@ -68,6 +66,7 @@ gitflow_set_major_minor() {
 		AVH_MINOR=0
 		AVH_PATCH_LEVEL=0
 	fi
+	AVH_VERSION=$AVH_MAJOR.$AVH_MINOR.$AVH_PATCH_LEVEL
 }
 
 gitflow_build_version() {
@@ -87,21 +86,22 @@ gitflow_set_dev_release() {
 # Set the rc-release, it counts all commits but not the one in master
 #
 gitflow_set_rc_release() {
-	local RC_LEVEL=$(echo "$1" | cut -f2 -d"-"|cut -f2 -d".")
 	AVH_PRE_RELEASE_PREFIX_RC=${AVH_PRE_RELEASE_PREFIX_RC:="-rc."}
+	RC_LEVEL=$(echo ${AVH_VERSION$AVH_PRE_RELEASE_PREFIX_RC#*$AVH_PRE_RELEASE_PREFIX_RC})
+	[ -z $RC_LEVEL ] && RC_LEVEL=0
 	RC_LEVEL=$(($RC_LEVEL+1))
 	AVH_PRE_RELEASE=${AVH_PRE_RELEASE_PREFIX_RC}${RC_LEVEL}
 }
 
 gitflow_get_current_version() {
-	CURRENT_VERSION=$(grep -m1 "### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
+	CURRENT_VERSION=$(grep -m1 "#### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
 	echo "$CURRENT_VERSION"
 }
 
 gitflow_get_stable_version() {
 	current_branch=$(git rev-parse --abbrev-ref HEAD)
 	git checkout -q "$MASTER_BRANCH"
-	STABLE_VERSION=$(grep -m1 "### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
+	STABLE_VERSION=$(grep -m1 "#### " $ROOTDIR/$CHANGELOG_FILE | cut -f2 -d" ")
 	git checkout -q $current_branch
 	echo "$STABLE_VERSION"
 }
